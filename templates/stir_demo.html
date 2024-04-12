@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+{% extends "layout.html" %}
+{% block content %}
+<html>
+<head>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        .matcha-powder {
+            fill: green;
+        }
+        .organized {
+            fill: green;
+        }
+        .brush-node, .sub-node {
+            fill: #6B492B;
+        }
+        .link {
+            stroke: #6B492B;
+            stroke-width: 1.5;
+        }
+        .container {
+            fill: white;
+            stroke: black;
+            stroke-width: 2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Stir Your Matcha Powder!</h2>
+    <svg width="400" height="400"></svg>
+    <rect id="milk-container" x="300" y="50" width="50" height="100" fill="white" stroke="black"/>
+    <button id="pour-milk">Pour Milk</button>
+
+    <script>
+        const svg = d3.select("svg");
+        const width = +svg.attr("width");
+        const height = +svg.attr("height");
+        const numNodes = 15000;
+        const radius = 1;
+        const containerRadius = 175; 
+        const numSubNodes = 20; 
+        const subNodeDistance = 15; 
+        const organizationThreshold = 50; 
+
+        svg.append("circle")
+            .attr("class", "container")
+            .attr("cx", width / 2)
+            .attr("cy", height / 2)
+            .attr("r", containerRadius);
+
+        const numClumps = 3;
+        const clumpRadius = 50;
+        const clumpCenters = [
+            { x: width / 3, y: height / 4 },
+            { x: width / 2, y: height / 2 },
+            { x: width / 3, y: 3 * height / 4 }
+        ];
+
+        const randomNodes = d3.range(numNodes).map(() => {
+            let isClump = Math.random() < 0.3;
+            if (isClump) {
+                let clumpCenter = clumpCenters[Math.floor(Math.random() * numClumps)];
+                let angle = Math.random() * Math.PI * 2;
+                let r = Math.random() * clumpRadius;
+                return {
+                    x: clumpCenter.x + r * Math.cos(angle),
+                    y: clumpCenter.y + r * Math.sin(angle),
+                    organized: false
+                };
+            } else {
+                let angle = Math.random() * Math.PI * 2;
+                let r = Math.random() * containerRadius;
+                return {
+                    x: width / 2 + r * Math.cos(angle),
+                    y: height / 2 + r * Math.sin(angle),
+                    organized: false
+                };
+            }
+        });
+
+        const randomNodeCircles = svg.selectAll("circle.matcha-powder")
+            .data(randomNodes)
+            .enter()
+            .append("circle")
+            .attr("class", "matcha-powder")
+            .attr("cx", d => d.x)
+            .attr("cy", d => d.y)
+            .attr("r", radius);
+
+        const brushNode = { x: width / 2, y: height / 2, isBrush: true };
+        const subNodes = d3.range(numSubNodes).map((_, i) => {
+            const angle = (i / numSubNodes) * Math.PI * 2;
+            return {
+                x: brushNode.x + Math.cos(angle) * subNodeDistance,
+                y: brushNode.y + Math.sin(angle) * subNodeDistance,
+                isSubNode: true
+            };
+        });
+
+        const links = subNodes.map(subNode => ({
+            source: brushNode,
+            target: subNode
+        }));
+
+        const brushSimulation = d3.forceSimulation([brushNode, ...subNodes])
+            .force("link", d3.forceLink(links).distance(subNodeDistance))
+            .force("charge", d3.forceManyBody().strength(-30))
+            .on("tick", () => {
+                link
+                    .attr("x1", d => d.source.x)
+                    .attr("y1", d => d.source.y)
+                    .attr("x2", d => d.target.x)
+                    .attr("y2", d => d.target.y);
+
+                node
+                    .attr("cx", d => d.x)
+                    .attr("cy", d => d.y);
+            });
+
+        const link = svg.selectAll(".link")
+            .data(links)
+            .enter()
+            .append("line")
+            .attr("class", "link");
+
+        const node = svg.selectAll(".node")
+            .data([brushNode, ...subNodes])
+            .enter()
+            .append("circle")
+            .attr("class", d => d.isBrush ? "brush-node" : "sub-node")
+            .attr("r", d => d.isBrush ? 7 : 3)
+            .call(d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended));
+
+        function dragstarted(event) {
+            if (!event.active) brushSimulation.alphaTarget(0.3).restart();
+            event.subject.fx = event.subject.x;
+            event.subject.fy = event.subject.y;
+        }
+
+        function dragged(event) {
+            event.subject.fx = event.x;
+            event.subject.fy = event.y;
+
+            let avgX = 0;
+            let avgY = 0;
+            subNodes.forEach(subNode => {
+                avgX += subNode.x;
+                avgY += subNode.y;
+            });
+            avgX /= subNodes.length;
+            avgY /= subNodes.length;
+
+            organizeNodes(avgX, avgY);
+        }
+
+        function dragended(event) {
+            if (!event.active) brushSimulation.alphaTarget(0);
+            event.subject.fx = null;
+            event.subject.fy = null;
+        }
+
+        function organizeNodes(brushX, brushY) {
+            randomNodes.forEach(node => {
+                const distance = Math.hypot(node.x - brushX, node.y - brushY);
+                if (distance < organizationThreshold) {
+                    const randomAngle = Math.random() * Math.PI * 2;
+                    const moveDistance = Math.random() * 10;
+                    node.x += Math.cos(randomAngle) * moveDistance;
+                    node.y += Math.sin(randomAngle) * moveDistance;
+                    node.organized = true;
+                }
+            });
+
+            randomNodeCircles
+                .data(randomNodes)
+                .attr("cy", d => d.y)
+                .classed("organized", d => d.organized);
+        }
+
+        function pourMilk() {
+            const milkContainer = d3.select("#milk-container");
+            const matchaContainer = d3.select(".container");
+
+            milkContainer.transition()
+                .duration(1000)
+                .attr("height", 0)
+                .on("end", () => {
+                    matchaContainer.transition()
+                        .duration(1000)
+                        .style("fill", "lightgreen");
+                });
+        }
+
+        d3.select("#pour-milk").on("click", pourMilk);
+    </script>
+</body>
+</html>
+{% endblock %}
+
