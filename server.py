@@ -25,7 +25,7 @@ def get_health():
 
 @app.route('/')
 def hello_world():
-   return render_template('welcome.html')
+   return render_template('stir_demo.html')
 
 @app.route('/stir')
 def stir():
