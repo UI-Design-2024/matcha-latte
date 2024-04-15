@@ -4,13 +4,48 @@
 {% block content %}
 <head>
     <meta charset="UTF-8">
-    <title>Learn</title>
-    <div class="container">
-        <h1>Implement Learn Page...</h1>
+    <title>Learn Tutorial</title>
+    <div class="title">
+        <h1>Learn</h1>
     </div>
 </head>
 <body>
-
+	<div class="container">
+		<div id="step1" class="step active">
+			<h2>Step 1</h2>
+			<div class = "learn_img">
+				<img src="../images/step1.jpeg">
+			</div>
+		</div>
+		<div id="step2" class="step">
+			<h2>Step 2</h2>
+			<p>
+				Content for page 2
+			</p>
+		</div>
+		<div id="step3" class="step">
+			<h2>Step 3</h2>
+			<p>
+				Content for page 3
+			</p>
+		</div>
+		<div id="step4" class="step">
+			<h2>Step 4</h2>
+			<p>
+				Content for page 4
+			</p>
+		</div>
+		<div id="step5" class="step">
+			<h2>Step 5</h2>
+			<p>
+				Enjoy your matcha latte!
+			</p>
+		</div>
+        <div class="nav-buttons">
+            <button onclick="navigate(-1)">Previous</button>
+            <button onclick="navigate(1)">Next</button>
+        </div>
+	</div>
 </body>
 </html>
 

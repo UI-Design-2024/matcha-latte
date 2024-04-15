@@ -1,0 +1,25 @@
+.title {
+	margin: 20px;
+	padding: 20px;
+	font-weight: bold;
+	font-family:'Lucida Sans', Geneva, Verdana, sans-serif;
+}
+.container {
+	margin: 20px;
+	padding: 20px;
+	border: 5px solid #ffffff;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.step {
+	display: none;
+}
+.active {
+	display: block;
+}
+.nav-buttons {
+	padding-top: 20px;
+}
+button {
+	padding: 10px;
+	margin: 5px;
+}
