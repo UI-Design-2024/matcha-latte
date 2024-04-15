@@ -23,3 +23,22 @@ button {
 	padding: 10px;
 	margin: 5px;
 }
+.learn_img {
+    display: flex;
+    align-items: center;
+}
+.learn_img img {
+    width: 500px;
+    height: 500px;
+}
+.step_info {
+    margin-left: 20px;
+}
+.learn_text{
+	background-color: #004d00; /* This is a dark green color, you can adjust it as needed */
+    color: white;
+    padding: 10px;
+    border-radius: 5px; /* Optional: for rounded corners */
+}
+
+

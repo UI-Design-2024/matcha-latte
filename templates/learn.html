@@ -13,33 +13,64 @@
 	<div class="container">
 		<div id="step1" class="step active">
 			<h2>Step 1</h2>
-			<div class = "learn_img">
-				<img src="../images/step1.jpeg">
-			</div>
+			<div class="learn_img">
+				<img src="{{ url_for('static', filename='step1.png') }}" alt="Step 1">
+				<div class="step_info">
+					<p class = "learn_text">
+						A matcha bowl, also known as a chawan in Japanese, is a traditional bowl used in Japanese tea ceremonies to prepare matcha.
+					</p>
+					<p class = "learn_text">
+						Gently add 1 tsp matcha and 1 ounce of hot water to your bowl or mug. The water should be hot but not boiling so as to properly dissolve the matcha without scalding or burning the delicate powder.
+					</p>
+				</div>
+			</div>			
 		</div>
 		<div id="step2" class="step">
 			<h2>Step 2</h2>
-			<p>
-				Content for page 2
-			</p>
+			<div class = "learn_img">
+				<img src="{{ url_for('static', filename='step2.png') }}" alt="Step 2">
+				<div class="step_info">
+					<p class = "learn_text">
+						A chasen is a traditional bamboo whisk used in Japanese tea ceremonies to prepare matcha.
+					</p>
+					<p class = "learn_text">
+						Use your chasen to remove clumps by whisking in a zigzag motion. This creates a "thick tea" called Koicha, which is typically enjoyed in a tea ceremony. 
+					</p>
+				</div>
+			</div>
 		</div>
 		<div id="step3" class="step">
 			<h2>Step 3</h2>
-			<p>
-				Content for page 3
-			</p>
+			<div class = "learn_img">
+				<img src="{{ url_for('static', filename='step3.png') }}" alt="Step 3">
+				<div class = "step_info">
+					<p class = "learn_text">
+						Add the remaining water, plus any sweeteners or add-ins, and whisk in an M-shaped motion until it's nice frothy.
+					</p>
+				</div>
+			</div>
 		</div>
 		<div id="step4" class="step">
 			<h2>Step 4</h2>
-			<p>
-				Content for page 4
-			</p>
+			<div class = "learn_img">
+				<img src="{{ url_for('static', filename='step4.png') }}" alt="Step 4">
+				<div class = "step_info">
+					<p class = "learn_text">
+						Now heat your milk or milk alternative to your preferred temperature. You may also use ice and cold milk to create an iced matcha.
+					</p>
+				</div>
+			</div>
 		</div>
 		<div id="step5" class="step">
 			<h2>Step 5</h2>
-			<p>
-				Enjoy your matcha latte!
-			</p>
+			<div class = "learn_img">
+				<img src="{{ url_for('static', filename='step5.png') }}" alt="Step 5">
+				<div class = "step_info">
+					<p class = "learn_text">
+						You can also use a milk frother to create latte art!
+					</p>
+				</div>
+			</div>
 		</div>
         <div class="nav-buttons">
             <button onclick="navigate(-1)">Previous</button>
