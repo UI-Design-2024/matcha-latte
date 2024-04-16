@@ -79,5 +79,24 @@ body, html {
     padding: 10px;
     border-radius: 5px; /* Optional: for rounded corners */
 }
-
-
+.bullet-points {
+    display: inline-block;
+    width: 100px; /* Adjust as needed */
+    text-align: left;
+	padding: 50px;
+}
+.bullet-points ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.bullet-points ul li {
+    margin-bottom: 10px;
+}
+.matcha_green_tea {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    text-align: center;
+}

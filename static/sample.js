@@ -1,5 +1,5 @@
 let currentStep = 1;
-const maxSteps = 6;
+const maxSteps = 9;
 
 function navigate(direction) {
 	const current = document.getElementById('step' + currentStep);
