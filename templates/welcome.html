@@ -1,6 +1,71 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="container">
-    <h1>Become a Matcha Latte Expert!</h1>
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100%;
+        }
+        .matcha-background {
+            background-color: #a8d5a1;
+            display: flex;
+            height: 100%
+        }
+        .text-container {
+            flex: 1;
+            text-align: center;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .image-container {
+            flex: 1;
+            position: relative;
+        }
+        .matcha-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.75;
+        }
+        .btn-matcha {
+            background-color: #89c08b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-matcha:hover, .btn-matcha:active, .btn-matcha:focus {
+            background-color: #76a478;
+            color: white;
+            outline: none;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div class="matcha-background container-fluid">
+    <div class="text-container">
+        <h1>Let's learn to be a Matcha Latte Expert!</h1>
+        <a href="{{ url_for('learn') }}" class="btn-matcha">START LEARNING</a>
+    </div>
+    <div class="image-container">
+        <img src="https://jackie-ryu-research.s3.amazonaws.com/iced-matcha-latte.jpg" class="matcha-image" alt="Matcha Latte">
+    </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
 {% endblock %}
