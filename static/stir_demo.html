@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-{% extends "layout.html" %}
-{% block content %}
+<!-- {% extends "layout.html" %}
+{% block content %} -->
 <html>
 <head>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <style>
+		body,html {
+			font-family: Arial, sans-serif;
+			color: white;
+		}
         .matcha-powder {
             fill: green;
         }
@@ -23,6 +27,15 @@
             stroke: black;
             stroke-width: 2;
         }
+		button {
+			background-color: #274527;
+			color: white;
+			padding: 10px 20px;
+			margin-top: 20px;
+			cursor: pointer;
+			text-decoration: none;
+			display: inline-block;
+		}
     </style>
 </head>
 <body>
@@ -198,5 +211,3 @@
     </script>
 </body>
 </html>
-{% endblock %}
-
