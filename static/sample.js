@@ -1,13 +1,17 @@
-$(document).ready(function() {
-    $('#choices li').click(function() {
-        var selected_index = parseInt($(this).attr('data-index'));
-        var correct_index = {{ quiz['correct_answer'] }};
-        if (selected_index === correct_index) {
-            $(this).addClass('correct');
-        } else {
-            $(this).addClass('incorrect');
-            $('#choices li[data-index="' + correct_index + '"]').addClass('correct');
-        }
-        $('#choices li').off('click');
-    });
-});
+let currentStep = 1;
+const maxSteps = 5;
+
+function navigate(direction) {
+	const current = document.getElementById('step' + currentStep);
+	currentStep += direction;
+
+	if (currentStep > maxSteps) {
+		currentStep = maxSteps;
+	} else if (currentStep < 1) {
+		currentStep = 1;
+	}
+
+	const next = document.getElementById('step' + currentStep);
+	if (current) current.style.display = 'none';
+	if (next) next.style.display = 'block';
+}
