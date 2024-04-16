@@ -10,7 +10,29 @@
 </head>
 <body>
 	<div class="container">
-		<div id="step1" class="step active">
+		<div id="step0" class="step active">
+			<h2>Overview</h2>
+			<div class="learn_img">
+				<img src="{{ url_for('static', filename='ingredient.png') }}" alt="ingredients and tools">
+				<div class="step_info">
+					<p class = "learn_text">
+						Ingredients:	
+							1 tsp ceremonial grade matcha
+							4 oz medium-hot water
+							8 oz milk or milk alternative
+							Optional: syrups or sweeteners
+					</p>
+					<p class = "learn_text">
+						Tools:
+							Bamboo whisk/frother
+							Small bowl
+							Bamboo tea ladle/spoon
+							Glass/mug
+					</p>
+				</div>
+			</div>			
+		</div>
+		<div id="step1" class="step">
 			<h2>Step 1</h2>
 			<div class="learn_img">
 				<img src="{{ url_for('static', filename='step1.png') }}" alt="Step 1">
@@ -79,6 +101,52 @@
 				<div class = "step_info">
 					<p class = "learn_text">
 						You can also use a milk frother to create latte art!
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div id="step7" class="step">
+			<h2>Difference Between Matcha and Green Tea</h2>
+			<div class="learn_img matcha_green_tea">
+				<div class="bullet-points">
+					<h2>Matcha</h2>
+					<ul>
+						<li>Matcha</li>
+						<li>Green Tea</li>
+					</ul>
+				</div>
+				<img src="{{ url_for('static', filename='matcha_green_tea.png') }}" alt="matcha_green_tea">
+				<div class="bullet-points">
+					<h2>Green Tea</h2>
+					<ul>
+						<li>Rich flavor</li>
+						<li>Light flavor</li>
+					</ul>
+				</div>
+			</div>
+		</div>		
+		<div id="step8" class="step">
+			<h2>Matcha Ceremony Etiquette/Practice</h2>
+			<div class = "learn_img">
+				<img src="{{ url_for('static', filename='tatami_mat.png') }}" alt="tatami-mat">
+				<div class = "step_info">
+					<p class = "learn_text">
+						Guests take off their shoes and kneel in a tatami-mat room.
+					</p>
+				</div>
+			</div>
+		</div>
+		<div id="step9" class="step">
+			<h2>Matcha Ceremony Etiquette/Practice</h2>
+			<div class = "learn_img">
+				<img src="{{ url_for('static', filename='ceremony.png') }}" alt="matcha-ceremony">
+				<div class = "step_info">
+					<p class = "learn_text">
+						Guests may then be served matcha in a chawan and small sweet cakes.
+					</p>
+					<p class = "learn_text">
+						Guests should raise the bowl, rotate it slightly right, take a sip and then compliment the master.
 					</p>
 				</div>
 			</div>
