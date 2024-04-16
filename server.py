@@ -64,6 +64,10 @@ def learn():
 def results():
    return render_template('results.html')
 
+@app.route('/quiz_home')
+def quiz_home():
+   return render_template('quiz_home.html')
+
 @app.route('/quiz/<int:quiz_id>')
 def quiz(quiz_id):
     quiz = quiz_data.get(str(quiz_id))
