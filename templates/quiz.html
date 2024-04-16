@@ -5,6 +5,7 @@
     <title>Quiz</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='sample.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='scores.js') }}"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
@@ -35,15 +36,16 @@
         <script>
             $(document).ready(function() {
                 var answered = false;
-                
                 $('#choices li').click(function() {
                     var selected_index = parseInt($(this).attr('data-index'));
                     var correct_index = {{ quiz['correct_answer'] }};
                     if (selected_index === correct_index) {
                         $(this).addClass('correct');
+                        add();
                     } else {
                         $(this).addClass('incorrect');
                         $('#choices li[data-index="' + correct_index + '"]').addClass('correct');
+                        subtract();
                     }
                     $('#choices li').off('click');
                     answered = true;
@@ -55,6 +57,7 @@
                         $('#nextBtn, #submitBtn').prop('disabled', false);
                     }
                 }
+                
             });
         </script>
     {% endblock %}
