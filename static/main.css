@@ -1,27 +1,61 @@
-.title {
-	margin: 20px;
-	padding: 20px;
-	font-weight: bold;
-	font-family:'Lucida Sans', Geneva, Verdana, sans-serif;
+body, html {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
+	height: 100%;
 }
-.container {
-	margin: 20px;
-	padding: 20px;
-	border: 5px solid #ffffff;
-	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+.matcha-background {
+	background-color: #a8d5a1;
+	display: flex;
+	height: 100%
+}
+.text-container, .title {
+	flex: 1;
+	text-align: center;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.image-container, .container {
+	flex: 1;
+	position: relative;
+}
+.matcha-image {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	opacity: 0.75;
+}
+.btn-matcha, button {
+	background-color: #89c08b;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	margin-top: 20px;
+	cursor: pointer;
+	text-decoration: none;
+	display: inline-block;
+}
+.btn-matcha:hover, .btn-matcha:active, .btn-matcha:focus, button:hover, button:active, button:focus {
+	background-color: #76a478;
+	color: white;
+	outline: none;
+	text-decoration: none;
 }
 .step {
 	display: none;
+	color: white;
 }
 .active {
 	display: block;
 }
 .nav-buttons {
 	padding-top: 20px;
-}
-button {
-	padding: 10px;
-	margin: 5px;
 }
 .learn_img {
     display: flex;
