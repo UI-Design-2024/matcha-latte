@@ -18,9 +18,14 @@ body, html {
 	justify-content: center;
 	align-items: center;
 }
-.image-container, .container {
+.image-container {
 	flex: 1;
 	position: relative;
+}
+.container {
+	margin: 20px;
+	padding: 20px;
+	border: 5px solid #ffffff;
 }
 .matcha-image {
 	position: absolute;
