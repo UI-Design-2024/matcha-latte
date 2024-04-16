@@ -62,7 +62,7 @@ def learn():
 
 @app.route('/results')
 def results():
-   return render_template('results.html')
+   return render_template('quizResults.html')
 
 @app.route('/quiz_home')
 def quiz_home():
