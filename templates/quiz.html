@@ -27,13 +27,15 @@
         <div style="clear: both;"></div> 
         <div class="buttons">
             {% if next_quiz_id %}
-                <a href="/quiz/{{ next_quiz_id }}"><button>Next</button></a>
+                <a href="/quiz/{{ next_quiz_id }}"><button id="nextBtn" disabled>Next</button></a>
             {% else %}
-                <a href="/results"><button>Submit Quiz</button></a>
+                <a href="/results"><button id="submitBtn" disabled>Submit Quiz</button></a>
             {% endif %}
         </div>
         <script>
             $(document).ready(function() {
+                var answered = false;
+                
                 $('#choices li').click(function() {
                     var selected_index = parseInt($(this).attr('data-index'));
                     var correct_index = {{ quiz['correct_answer'] }};
@@ -44,7 +46,15 @@
                         $('#choices li[data-index="' + correct_index + '"]').addClass('correct');
                     }
                     $('#choices li').off('click');
+                    answered = true;
+                    enableButton();
                 });
+                
+                function enableButton() {
+                    if (answered) {
+                        $('#nextBtn, #submitBtn').prop('disabled', false);
+                    }
+                }
             });
         </script>
     {% endblock %}
