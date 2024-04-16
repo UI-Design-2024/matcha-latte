@@ -3,6 +3,7 @@
 
 <head>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='scores.js') }}"></script>
     <meta charset="UTF-8">
     <title>Quiz</title>
     </div>
@@ -19,24 +20,32 @@
         font-size: 50px;
         font-weight: bold;
       }.button{
-        background-color: beige;
+        background-color: #89c08b;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        margin-top: 20px;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
       }
     </style>
 </head>
 <body>
-  {% extends "layout.html" %}
-  {% block content %}
-  QuizScore = 5
-  <div class="congrats">Congratulations!</div>
-  <div class="score">Your score is ${QuizScore} / 5!</div>
-  <a href="learn.html"><button>Learn more</button></a>
-  <a href="quiz.html"><button>quiz again!</button></a>
-  <script>
-    const QuizScore = 5;
-    $(".score").html(`Your score is ${QuizScore} / 5!`);
-  </script>
-
+    {% extends "layout.html" %}
+    {% block content %}
+        <div class="congrats">Congratulations!</div>
+        <div class="score">Loading your score...</div>  <!-- Ensure this element is present -->
+        <a href="/learn"><button class="button">Learn more</button></a>
+        <a href="/quiz_home"><button class="button">Quiz again!</button></a>
+        <script>
+            $(document).ready(function() {
+                // Retrieve the score from sessionStorage
+                const QuizScore = sessionStorage.getItem('QuizScore') || 0;
+                // Update the display
+                $(".score").html(`Your score is ${QuizScore} / 4!`);
+            });
+        </script>
+    {% endblock %}
 </body>
 </html>
-
-{% endblock %}
