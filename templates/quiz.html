@@ -1,17 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-{% extends "layout.html" %}
-{% block content %}
 <head>
     <meta charset="UTF-8">
     <title>Quiz</title>
-    <div class="container">
-        <h1>Implement Quiz Page...</h1>
-    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='sample.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-
+    {% extends "layout.html" %}
+    {% block content %}  
+        <div class="question">
+            <h2>Question {{ quiz_id }}</h1>
+            <h3>{{ quiz['question'] }}</h2>
+            {% if 'image' in quiz %}
+                <img class="quiz_image" src="{{ url_for('static', filename=quiz['image']) }}" alt="Question Image">
+            {% endif %}
+        </div>
+        <div class="options">
+            <ul id="choices">
+                {% for i in range(quiz['choices']|length) %}
+                    <li class="option" data-index="{{ i }}">{{ quiz['choices'][i] }}</li>
+                {% endfor %}
+            </ul>
+        </div>        
+        <div style="clear: both;"></div> 
+        <div class="buttons">
+            {% if next_quiz_id %}
+                <a href="/quiz/{{ next_quiz_id }}"><button id="nextBtn" disabled>Next</button></a>
+            {% else %}
+                <a href="/results"><button id="submitBtn" disabled>Submit Quiz</button></a>
+            {% endif %}
+        </div>
+        <script>
+            $(document).ready(function() {
+                var answered = false;
+                
+                $('#choices li').click(function() {
+                    var selected_index = parseInt($(this).attr('data-index'));
+                    var correct_index = {{ quiz['correct_answer'] }};
+                    if (selected_index === correct_index) {
+                        $(this).addClass('correct');
+                    } else {
+                        $(this).addClass('incorrect');
+                        $('#choices li[data-index="' + correct_index + '"]').addClass('correct');
+                    }
+                    $('#choices li').off('click');
+                    answered = true;
+                    enableButton();
+                });
+                
+                function enableButton() {
+                    if (answered) {
+                        $('#nextBtn, #submitBtn').prop('disabled', false);
+                    }
+                }
+            });
+        </script>
+    {% endblock %}
 </body>
 </html>
-
-{% endblock %}

@@ -1,0 +1,39 @@
+#choices .correct {
+    background-color: lightgreen;
+    color: black;
+}
+#choices .incorrect {
+    background-color: lightcoral;
+    color: black;
+}
+.question {
+    width: 50%; 
+    float: left;
+    padding: 20px;
+}
+.options {
+    width: 50%; 
+    float: left;
+    padding: 40px;
+    margin-top: 50px;
+}
+.option {
+    list-style: none; 
+    background-color: lightgray; 
+    padding: 10px; 
+    margin-bottom: 10px; 
+    border-radius: 5px; 
+    cursor: pointer;
+}
+.option:hover {
+    background-color: gray;
+}
+.buttons {
+    padding-left: 20px;
+}
+.quiz_image {
+    padding: 20px;
+    display: block;
+    margin: 0 auto; 
+    width: 230px;
+}

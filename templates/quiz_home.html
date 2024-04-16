@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learn</title>
+    <style>
+        h1 {
+            color: #4b4b4b; 
+        }
+        .container {
+            text-align: center;
+            margin-top: 100px;
+        }
+        .start-button {
+            margin-top: 30px;
+            padding: 10px 20px;
+            font-size: 25px;
+            color: #4b4b4b; 
+            border: 3px solid #4b4b4b; 
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block; 
+            text-decoration: none; 
+        }
+
+        .start-button:hover {
+            background-color: #4b4b4b; 
+            color: #fff; 
+        }
+    </style>
+</head>
+<body>
+    {% extends "layout.html" %}
+    {% block content %}
+    <div class="container">
+        <h1>Let’s test your Matcha Latte knowledge!</h1>
+        <a href="/quiz/1" class="start-button">Start Quiz</a>
+    </div>
+    {% endblock %}
+</body>
+</html>
