@@ -92,21 +92,19 @@
         </div>
         <div class="col-md-3"></div>
     </div>
-        <a href="/learn"><button class="button">Learn more</button></a>
+        <a href="/learn"><button class="learn-button">Learn more</button></a>
         <a href="/quiz_home"><button class="quiz-button">Quiz again!</button></a>
         <script>
             $(document).ready(function() {
                 // Retrieve the score from sessionStorage
                 const QuizScore = sessionStorage.getItem('QuizScore') || 0;
 
-                // Update the display
-
+                var maxScore = 4; // Maximum possible score
                 $('.quiz-button').click(function() {
                     sessionStorage.setItem('QuizScore', 0);
+                });$('.learn-button').click(function() {
+                    sessionStorage.setItem('QuizScore', 0);
                 });
-
-                var maxScore = 4; // Maximum possible score
-
                 function updatePie(score) {
                       $(".correct").html(`Correct: ${score}`);
                       $(".incorrect").html(`Incorrect: ${maxScore-score}`);
