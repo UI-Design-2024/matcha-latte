@@ -26,7 +26,7 @@
                         <a class="nav-link" href="/learn">Learn</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/quiz_home">Quiz</a>
+                        <a class="nav-link" href="/quiz_home" id="quiz-link">Quiz</a>
                     </li>
                 </ul>
             </div>
@@ -37,5 +37,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
 </body>
 <script>
+     $('#quiz-link').click(function() {
+                    sessionStorage.setItem('QuizScore', 0);
+                });
 </script>
 </html>
