@@ -3,6 +3,8 @@
 
 <head>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='scores.js') }}"></script>
     <meta charset="UTF-8">
     <title>Quiz</title>
@@ -13,12 +15,10 @@
         margin-top: 100px;
       }
       .congrats{
-        color: rgb(96, 171, 96);
+        color: rgb(38, 42, 38);
         font-size: 40px;
-      }.score{
-        color: rgb(96, 171, 96);
-        font-size: 50px;
-        font-weight: bold;
+        margin-top: 100px;
+       font-weight: 700;
       }.button{
         background-color: #89c08b;
         color: white;
@@ -28,22 +28,106 @@
         cursor: pointer;
         text-decoration: none;
         display: inline-block;
-      }
+      }.pie {
+            --w: 150px;
+            --c: red; /* Default color */
+            --p: 50; /* Default percentage */
+            --b: 10%;
+            width: var(--w);
+            aspect-ratio: 1;
+            position: relative;
+            display: inline-grid;
+            place-content: center;
+            margin: 5px;
+            font-size: 25px;
+            font-weight: bold;
+            font-family: sans-serif;
+            background-color: #f2f2f2;
+            border-radius: 75px;
+        }
+        .pie:before {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            inset: 0;
+            background: conic-gradient(var(--c) calc(var(--p)*1%), #0000 0);
+            -webkit-mask: radial-gradient(farthest-side, #0000 calc(99% - var(--b)), #000 calc(100% - var(--b)));
+            mask: radial-gradient(farthest-side, #0000 calc(99% - var(--b)), #000 calc(100% - var(--b)));
+            transition: all 0.3s ease; /* Smooth transition for changes */
+        }.results-info{
+          background-color: rgb(255, 255, 255);
+          width: 300px;
+          border-radius: 30px;
+        }.main{
+          display: flex;
+          align-items: center;
+          padding-top: 50px;
+        }.pie-container{
+          display: inline;
+          background-color: #89c08b;
+        }.correct{
+          font-size: 30px;
+          font-weight: bold;
+          color: rgb(72, 172, 72);
+        }.incorrect{
+          font-size: 30px;
+          font-weight: bold;
+          color: rgb(239, 133, 133);
+        }
+
     </style>
 </head>
 <body>
     {% extends "layout.html" %}
     {% block content %}
-        <div class="congrats">Congratulations!</div>
-        <div class="score">Loading your score...</div>  <!-- Ensure this element is present -->
-        <a href="/learn"><button class="button">Learn more</button></a>
-        <a href="/quiz_home"><button class="button">Quiz again!</button></a>
+    <div class="main row">
+        <div class="congrats col-md-12">Congratulations!</div>
+        <div class="col-md-3"></div>
+        <div class="results-info col-md-6">
+          <div class="pie" id="pie">Loading...</div>
+          <div class="scores">
+            <div class="correct">Correct</div>
+            <div class="incorrect">Incorrect</div>
+          </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+        <a href="/learn"><button class="learn-button">Learn more</button></a>
+        <a href="/quiz_home"><button class="quiz-button">Quiz again!</button></a>
         <script>
             $(document).ready(function() {
                 // Retrieve the score from sessionStorage
                 const QuizScore = sessionStorage.getItem('QuizScore') || 0;
-                // Update the display
-                $(".score").html(`Your score is ${QuizScore} / 4!`);
+
+                var maxScore = 4; // Maximum possible score
+                $('.quiz-button').click(function() {
+                    sessionStorage.setItem('QuizScore', 0);
+                });$('.learn-button').click(function() {
+                    sessionStorage.setItem('QuizScore', 0);
+                });
+                function updatePie(score) {
+                      $(".correct").html(`Correct: ${score}`);
+                      $(".incorrect").html(`Incorrect: ${maxScore-score}`);
+                    if (score == 4){
+                      $(".congrats").html("Excellent!");
+                    }else if (score == 2){
+                      $(".congrats").html("Good!");
+                    }else if (score == 3){
+                      $(".congrats").html("Good!");
+                    }else{
+                      $(".congrats").html("Learn more!");
+                    }
+                    // Calculate percentage based on score
+                    var percentage = (score / maxScore) * 100;
+                    $(".pie").html(`${percentage}%`);
+                    // Update CSS variables
+                    $('#pie').css({
+                        '--p': percentage,
+                        '--c': percentage >= 50 ? 'green' : 'red' // Change color based on score
+                    });
+                }
+
+                updatePie(QuizScore);
             });
         </script>
     {% endblock %}

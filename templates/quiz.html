@@ -12,8 +12,8 @@
     {% extends "layout.html" %}
     {% block content %}  
         <div class="question">
-            <h2>Question {{ quiz_id }}</h1>
-            <h3>{{ quiz['question'] }}</h2>
+            <h1>Question {{ quiz_id }}</h1>
+            <p class = 'quizq'>{{ quiz['question'] }}</p>
             {% if 'image' in quiz %}
                 <img class="quiz_image" src="{{ url_for('static', filename=quiz['image']) }}" alt="Question Image">
             {% endif %}

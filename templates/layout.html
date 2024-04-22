@@ -14,7 +14,7 @@
 	<script type="text/javascript" src="{{ url_for('static', filename = 'sample.js') }}"></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">Matcha Latte 🍵</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,10 +23,10 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/learn">Learn</a>
+                        <a class="nav-link" href="/learn" id="learn-link">Learn</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/quiz_home">Quiz</a>
+                        <a class="nav-link" href="/quiz_home" id="quiz-link">Quiz</a>
                     </li>
                 </ul>
             </div>
@@ -37,5 +37,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
 </body>
 <script>
+    $('#quiz-link').click(function() {
+        sessionStorage.setItem('QuizScore', 0);
+    });
+    $('#learn-link').click(function() {
+        sessionStorage.setItem('QuizScore', 0);
+    });
+
 </script>
 </html>

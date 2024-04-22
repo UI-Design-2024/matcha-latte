@@ -1,5 +1,18 @@
+:root {
+    --main-bg-color: rgb(174, 207, 168);
+    --secondary-bg-color: #2a4e2a;
+    --accent-color: #2a4e2a;
+    --text-color: #ffffff;
+    --hover-bg-color: #528254;
+}
+body, html {
+    font-family: Arial, sans-serif;
+    color: var(--text-color); /* Using the defined CSS variable */
+    background-color: var(--main-bg-color);
+}
+
 #choices .correct {
-    background-color: lightgreen;
+    background-color: rgb(121, 255, 121);
     color: black;
 }
 #choices .incorrect {
@@ -11,22 +24,27 @@
     float: left;
     padding: 20px;
 }
+.quizq {
+	border-radius: 2px;
+	font-size: 20px;
+}
 .options {
     width: 50%; 
     float: left;
     padding: 40px;
     margin-top: 50px;
+	color: white
 }
 .option {
     list-style: none; 
-    background-color: lightgray; 
+    background-color:rgb(120, 120, 120);
     padding: 10px; 
     margin-bottom: 10px; 
     border-radius: 5px; 
     cursor: pointer;
 }
 .option:hover {
-    background-color: gray;
+    background-color: var(--accent-color);
 }
 .buttons {
     padding-left: 20px;
