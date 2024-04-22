@@ -1,13 +1,36 @@
+:root {
+    --main-bg-color: rgb(174, 207, 168);
+    --secondary-bg-color: #89c08b;
+    --accent-color: #2a4e2a;
+    --text-color: #ffffff;
+    --hover-bg-color: #2a4e2a;
+}
 body, html {
-	margin: 0;
-	padding: 0;
+    font-family: Arial, sans-serif;
+    color: var(--text-color);
+    background-color: var(--main-bg-color);
+}
+.navbar, .navbar-brand, .nav-item, .nav-link {
 	font-family: Arial, sans-serif;
-	height: 100%;
+	background-color: var(--main-bg-color);
+	color: var(--text-color);
+	font-size: 18px;
+}
+.navbar-brand:hover {
+	color: white;
+	outline: none;
+	text-decoration: none;
+}
+.container {
+    margin: 20px;
+    padding: 20px;
+    border: 5px solid #ffffff;
+    background-color: var(--main-bg-color);
 }
 .matcha-background {
-	background-color: #a8d5a1;
-	display: flex;
-	height: 100%
+	background-color: var(--main-bg-color);
+	/* display: flex;
+	height: 100% */
 }
 .text-container, .title {
 	flex: 1;
@@ -18,15 +41,47 @@ body, html {
 	justify-content: center;
 	align-items: center;
 }
+.learn_img {
+    display: flex;
+    align-items: center;
+}
 .image-container {
 	flex: 1;
 	position: relative;
 }
-.container {
-	margin: 20px;
-	padding: 20px;
-	border: 5px solid #ffffff;
+.learn_img img, .image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
 }
+iframe {
+    width: 100%;
+    border: none;
+}
+.nav-buttons button {
+    background-color: var(--secondary-bg-color);
+    padding: 10px 15px;
+    margin: 10px;
+    color: var(--text-color);
+    border: none;
+    cursor: pointer;
+}
+.nav-buttons button:hover {
+    background-color: var(--hover-bg-color);
+}
+h1, h2 {
+    color: var(--text-color);
+    text-align: center;
+    border-radius: 5px;
+}
+
+.learn_text {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    padding: 10px;
+    border-radius: 5px;
+}
+
 .matcha-image {
 	position: absolute;
 	top: 0;
@@ -41,13 +96,14 @@ body, html {
 	color: white;
 	border: none;
 	padding: 10px 20px;
+    border-radius: 5px;
 	margin-top: 20px;
 	cursor: pointer;
 	text-decoration: none;
 	display: inline-block;
 }
-.btn-matcha:hover, .btn-matcha:active, .btn-matcha:focus, button:hover, button:active, button:focus {
-	background-color: #76a478;
+.btn-matcha:hover, .btn-matcha:active, .btn-matcha:focus, button:hover, button:active, button:focus, .nav-link:hover {
+	background-color: var(--hover-bg-color);
 	color: white;
 	outline: none;
 	text-decoration: none;
@@ -56,21 +112,17 @@ body, html {
 	display: none;
 	color: white;
 }
-h2 {
+/* h2 {
 	color: white;
     padding: 10px;
-    border-radius: 5px; /* Optional: for rounded corners */
-}
+    border-radius: 5px; 
+} */
 .active {
 	display: block;
 }
-.nav-buttons {
+/* .nav-buttons {
 	padding-top: 20px;
-}
-.learn_img {
-    display: flex;
-    align-items: center;
-}
+} */
 .learn_img img {
     width: 500px;
     height: 500px;
@@ -78,11 +130,20 @@ h2 {
 .step_info {
     margin-left: 20px;
 }
-.learn_text{
-	background-color: #004d00; /* This is a dark green color, you can adjust it as needed */
-    color: white;
-    padding: 10px;
-    border-radius: 5px; /* Optional: for rounded corners */
+.contain {
+	text-align: center;
+	margin-top: 100px;
 }
-
-
+.btn, .start-button, button {
+    background-color: var(--secondary-bg-color);
+    color: var(--text-color);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+}
+.btn:hover, .start-button:hover, button:hover {
+    background-color: var(--hover-bg-color);
+}
