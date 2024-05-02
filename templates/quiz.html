@@ -11,7 +11,7 @@
 <body>
     {% extends "layout.html" %}
     {% block content %}  
-        <div class="question">
+        <div class="question question_text">
             <h1>Question {{ quiz_id }}</h1>
             <p class='quizq'>{{ quiz['question'] }}</p>
             {% if 'image' in quiz %}

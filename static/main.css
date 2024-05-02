@@ -73,12 +73,27 @@ h1, h2 {
     color: var(--text-color);
     text-align: center;
     border-radius: 5px;
+    padding: 10px;
+}
+.learn_img.matcha_green_tea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .learn_text {
     background-color: var(--accent-color);
     color: var(--text-color);
     padding: 10px;
+    border-radius: 5px;
+    margin: 20px;
+}
+
+.ingredient_info {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    padding: 10px;
+    margin: 20px;
     border-radius: 5px;
 }
 
@@ -133,6 +148,9 @@ h1, h2 {
 .contain {
 	text-align: center;
 	margin-top: 100px;
+}
+em {
+    font-weight: bold;
 }
 .btn, .start-button, button {
     background-color: var(--secondary-bg-color);

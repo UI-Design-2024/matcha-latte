@@ -14,22 +14,26 @@
 			<h2>Overview</h2>
 			<div class="learn_img">
 				<img src="{{ url_for('static', filename='ingredient.png') }}" alt="ingredients and tools">
-				<div class="step_info">
-					<p class = "learn_text">
-						Ingredients:	
-							1 tsp ceremonial grade matcha
-							4 oz medium-hot water
-							8 oz milk or milk alternative
-							Optional: syrups or sweeteners
+				<div class="ingredient_info">
+					<p class="learn_text">
+						Ingredients:
+						<ul>
+							<li>1 tsp ceremonial grade matcha</li>
+							<li>4 oz medium-hot water</li>
+							<li>8 oz milk or milk alternative</li>
+							<li>Optional: syrups or sweeteners</li>
+						</ul>
 					</p>
-					<p class = "learn_text">
+					<p class="learn_text">
 						Tools:
-							Bamboo whisk/frother
-							Small bowl
-							Bamboo tea ladle/spoon
-							Glass/mug
+						<ul>
+							<li>Bamboo whisk/frother</li>
+							<li>Small bowl</li>
+							<li>Bamboo tea ladle/spoon</li>
+							<li>Glass/mug</li>
+						</ul>
 					</p>
-				</div>
+				</div>				
 			</div>			
 		</div>
 		<div id="step1" class="step">
@@ -111,20 +115,24 @@
 		<div id="step7" class="step">
 			<h2>Difference Between Matcha and Green Tea</h2>
 			<div class="learn_img matcha_green_tea">
-				<div class="bullet-points">
-					<h2>Matcha</h2>
-					<ul>
-						<li>Matcha</li>
-						<li>Green Tea</li>
-					</ul>
+				<div class="learn_text">
+					<div class="bullet-points">
+						<h2>Matcha</h2>
+						<ul>
+							<li><em>Shade-grown</em> in the three weeks <br> before it is harvested</li>
+							<li>Vibrant <em>green color</em></li>
+						</ul>
+					</div>
 				</div>
 				<img src="{{ url_for('static', filename='matcha_green_tea.png') }}" alt="matcha_green_tea">
-				<div class="bullet-points">
-					<h2>Green Tea</h2>
-					<ul>
-						<li>Rich flavor</li>
-						<li>Light flavor</li>
-					</ul>
+				<div class="learn_text">
+					<div class="bullet-points">
+						<h2>Green Tea</h2>
+						<ul>
+							<li>Cultivated <em>under the sun</em></li>
+							<li><em>Dull green</em> with a brownish tone</li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>		

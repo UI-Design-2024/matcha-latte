@@ -20,13 +20,19 @@ body, html {
     color: black;
 }
 .question {
-    width: 50%; 
+    width: 45%; 
     float: left;
     padding: 20px;
 }
 .quizq {
 	border-radius: 2px;
 	font-size: 20px;
+}
+.question_text {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border-radius: 5px;
+    margin: 15px;
 }
 .options {
     width: 50%; 
