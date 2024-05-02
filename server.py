@@ -79,6 +79,10 @@ def quiz(quiz_id):
     
     return render_template('quiz.html', quiz_id=quiz_id, quiz=quiz, prev_quiz_id=prev_quiz_id, next_quiz_id=next_quiz_id)
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+    
 if __name__ == '__main__':
    app.run(debug = True)
 
