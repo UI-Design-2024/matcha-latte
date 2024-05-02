@@ -100,7 +100,7 @@
                 // Retrieve the score from sessionStorage
                 const QuizScore = sessionStorage.getItem('QuizScore') || 0;
 
-                var maxScore = 4; // Maximum possible score
+                var maxScore = 5; // Maximum possible score
                 $('.quiz-button').click(function() {
                     sessionStorage.setItem('QuizScore', 0);
                 });$('.learn-button').click(function() {
@@ -109,8 +109,11 @@
                 function updatePie(score) {
                       $(".correct").html(`Correct: ${score}`);
                       $(".incorrect").html(`Incorrect: ${maxScore-score}`);
-                    if (score == 4){
+                    if (score == 5){
                       $(".congrats").html("Excellent!");
+                    }
+                    else if (score == 4){
+                      $(".congrats").html("Good!");
                     }else if (score == 2){
                       $(".congrats").html("Good!");
                     }else if (score == 3){

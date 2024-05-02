@@ -33,6 +33,17 @@ quiz_data = {
        "question": "You want to bring matcha with you to enjoy for a hiking trip. What tools would you recommend for preparing traditional matcha on-the-go?",
        "choices": ["Pack a compact bamboo matcha whisk and matcha bowl, along with an insulated flask for warm water.", "For simplicity, utilize pre-packaged unwhisked matcha packets.", "Opt for instant matcha powder and a battery-operated milk frother.", "Choose a traditional matcha whisk made of bamboo and a ceramic matcha bowl for authenticity."],
        "correct_answer": 0
+    },
+    "5": {
+        "question": "In the traditional Japanese tea ceremony, what is the recommended procedure for serving matcha to guests?",
+        "choices": [
+            "Guests should pour matcha into their own bowls and then compliment the host.",
+            "Guests should kneel in a tatami-mat room, raise the bowl, rotate it slightly right, and compliment the host.",
+            "Guests should take off their shoes and serve themselves matcha from a communal bowl placed in the center of the room.",
+            "Guests should politely decline matcha if offered to them."
+        ],
+        "correct_answer": 1,
+        "image": "ceremony.png"
     }
 }
 
