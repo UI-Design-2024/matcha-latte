@@ -15,23 +15,31 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">Matcha Latte 🍵</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/learn" id="learn-link">Learn</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/quiz_home" id="quiz-link">Quiz</a>
-                    </li>
-                </ul>
-            </div>
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Matcha Latte 🍵</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/learn" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Learn
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="/learn?step=0">How to Make Matcha</a></li>
+                        <li><a class="dropdown-item" href="/learn?step=7;">Matcha vs. Green Tea</a></li>
+                        <li><a class="dropdown-item" href="/learn?step=8;">Ceremony Etiquette/Practice</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/quiz_home">Quiz</a>
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
+
     {% block content %}
     {% endblock %}
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
@@ -44,5 +52,39 @@
         sessionStorage.setItem('QuizScore', 0);
     });
 
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.dropdown').hover(
+            function() {
+                $(this).find('.dropdown-menu').stop(true, true).slideDown("fast");
+                $(this).find('.dropdown-toggle').attr('aria-expanded', 'true');
+            },
+            function() {
+                $(this).find('.dropdown-menu').stop(true, true).slideUp("fast");
+                $(this).removeClass('show');
+                $(this).find('.dropdown-toggle').attr('aria-expanded', 'false');
+            }
+        );
+    });
+
+    function goToStep(step) {
+        if (isNaN(step) || step < 0 || step > maxStepsLearn) step = 0;
+
+        const current = document.querySelector('.step.active');
+        if (current) current.style.display = 'none';
+        current.classList.remove('active');
+
+        const target = document.getElementById('step' + step);
+        if (target) {
+            target.style.display = 'block';
+            target.classList.add('active');
+        }
+
+        currentStepLearn = step;
+        updateProgressBarLearn();
+    }
 </script>
 </html>

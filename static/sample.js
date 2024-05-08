@@ -6,7 +6,6 @@ function updateProgressBarLearn() {
     if (progressBar) {
         let width = (currentStepLearn / maxStepsLearn) * 100;
         progressBar.style.width = width + '%';
-        progressBar.textContent = `Step ${currentStepLearn + 1} of ${maxStepsLearn + 1}`;
     }
 }
 
@@ -16,6 +15,9 @@ function navigate(direction) {
 
     if (currentStepLearn > maxStepsLearn) {
         currentStepLearn = maxStepsLearn;
+        let progressBar = document.getElementById('progress-bar-learn');
+        progressBar.textContent = `You've completed the Learning section!`;
+
         if (!added) {
             $(".to-quiz").html('<a href="/quiz_home"><button class="quiz-button">Quiz</button></a>');
             added = true;
@@ -34,6 +36,20 @@ function navigate(direction) {
     updateProgressBarLearn();
 }
 
+function getParameterByName(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
 document.addEventListener("DOMContentLoaded", function() {
-    updateProgressBarLearn();
+    let step = getParameterByName('step');
+    if (step !== null) {
+        goToStep(parseInt(step));
+    } else {
+        goToStep(0);
+    }
 });

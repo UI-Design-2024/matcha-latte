@@ -199,3 +199,24 @@ em {
     white-space: nowrap;
     position: relative;
 }
+
+.navbar {
+    background-color: var(--main-bg-color)
+}
+
+.nav-link {
+    color: white;
+}
+
+.dropdown-menu {
+    background-color: white;
+}
+
+.dropdown-item:hover {
+    background-color: #91c489;
+}
+
+.navbar .dropdown-menu {
+    left: auto;
+    right: 0;
+}
