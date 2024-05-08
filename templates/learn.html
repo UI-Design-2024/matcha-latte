@@ -10,6 +10,9 @@
 </head>
 <body>
 	<div class="container">
+        <div id="progress-bar-container-learn">
+            <div id="progress-bar-learn" style="width: 10%;"></div>
+        </div>
 		<div id="step0" class="step active">
 			<h2>Overview</h2>
 			<div class="learn_img">
@@ -37,19 +40,19 @@
 			</div>			
 		</div>
 		<div id="step1" class="step">
-			<h2>Step 1</h2>
-			<div class="learn_img">
-				<img src="{{ url_for('static', filename='step1.png') }}" alt="Step 1">
-				<div class="step_info">
-					<p class = "learn_text">
-						A matcha bowl, also known as a chawan in Japanese, is a traditional bowl used in Japanese tea ceremonies to prepare matcha.
-					</p>
-					<p class = "learn_text">
-						Gently add 1 tsp matcha and 1 ounce of hot water to your bowl or mug. The water should be hot but not boiling so as to properly dissolve the matcha without scalding or burning the delicate powder.
-					</p>
-				</div>
-			</div>			
-		</div>
+            <h2>Step 1</h2>
+            <div class="learn_img">
+                <img src="{{ url_for('static', filename='step1.png') }}" alt="Step 1">
+                <div class="learn_text">
+                    <p>
+                        A matcha bowl, also known as a chawan in Japanese, is a traditional bowl used in Japanese tea ceremonies to prepare matcha.
+                    </p>
+                    <p>
+                        Gently add 1 tsp matcha and 1 ounce of hot water to your bowl or mug. The water should be hot but not boiling so as to properly dissolve the matcha without scalding or burning the delicate powder.
+                    </p>
+                </div>
+            </div>
+        </div>
 		<div id="step2" class="step">
 			<h2>Step 2</h2>
 			<div class = "learn_img">
@@ -164,7 +167,7 @@
         <div class="nav-buttons">
             <button onclick="navigate(-1)">Previous</button>
             <button onclick="navigate(1)">Next</button>
-						<span class="to-quiz"></spna>
+            <span class="to-quiz"></span>
         </div>
 	</div>
 </body>

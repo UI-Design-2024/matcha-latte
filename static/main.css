@@ -22,8 +22,6 @@ body, html {
 	text-decoration: none;
 }
 .container {
-    margin: 20px;
-    padding: 20px;
     border: 5px solid #ffffff;
     background-color: var(--main-bg-color);
 }
@@ -164,4 +162,40 @@ em {
 }
 .btn:hover, .start-button:hover, button:hover {
     background-color: var(--hover-bg-color);
+}
+
+#progress-bar-container-learn {
+    width: 100%;
+    background-color: #ddd;
+    margin: 20px 0;
+    border-radius: 15px;
+}
+
+#progress-bar-learn {
+    height: 30px;
+    background-color: #4CAF50;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    border-radius: 15px;
+    white-space: nowrap;
+    position: relative;
+}
+
+#progress-bar-container-quiz {
+    width: 97%;
+    background-color: #ddd;
+    margin: 20px auto;
+    border-radius: 15px;
+}
+
+#progress-bar-quiz {
+    height: 30px;
+    background-color: #4CAF50;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    border-radius: 15px;
+    white-space: nowrap;
+    position: relative;
 }

@@ -10,7 +10,10 @@
 </head>
 <body>
     {% extends "layout.html" %}
-    {% block content %}  
+    {% block content %}
+        <div id="progress-bar-container-quiz">
+            <div id="progress-bar-quiz" style="width: 0%;"></div>
+        </div>
         <div class="question question_text">
             <h1>Question {{ quiz_id }}</h1>
             <p class='quizq'>{{ quiz['question'] }}</p>
@@ -35,6 +38,44 @@
             <span id="error" style="color: #2a4e2a; display: none;">Please answer the question.</span>
         </div>
         <script>
+            var currentStepQuiz = 0;
+            var maxStepsQuiz = 5;
+            var added = false;
+
+            function getCurrentStepFromURL() {
+                const path = window.location.pathname;
+                const parts = path.split('/');
+                console.log(parts[parts.length - 1]);
+
+                return parseInt(parts[parts.length - 1]) || 0;
+            }
+
+            function updateProgressBarQuiz() {
+                let currentStepQuiz = getCurrentStepFromURL()
+                let progressBar = document.getElementById('progress-bar-quiz');
+                console.log(currentStepQuiz)
+                if (progressBar) {
+                    let width = (currentStepQuiz / maxStepsQuiz) * 100;
+                    progressBar.style.width = width + '%';
+                    progressBar.textContent = `Question ${currentStepQuiz} of ${maxStepsQuiz}`;
+                }
+            }
+
+            function nextQuestion() {
+                const nextStep = currentStepQuiz + 1;
+                if (nextStep > maxStepsQuiz) {
+                    window.location.href = "/results";
+                } else {
+                    window.location.href = `/quiz/${nextStep}`;
+                }
+            }
+
+
+            document.addEventListener("DOMContentLoaded", function() {
+                updateProgressBarQuiz();
+            });
+
+
             $(document).ready(function() {
                 var answered = false;
 				var score = sessionStorage.getItem('QuizScore') || 0;
@@ -58,23 +99,24 @@
                 $('#nextBtn').click(function() {
                     console.log(answered)
                     if (!answered) {
-                        $('#error').show(); // Show error message
-                        return false; // Prevent navigating to the next page
+                        $('#error').show();
+                        return false;
                     }
+                    nextQuestion();
                 });
 
                 $('#submitBtn').click(function() {
                     console.log(answered)
                     if (!answered) {
-                        $('#error').show(); // Show error message
-                        return false; // Prevent navigating to the next page
+                        $('#error').show();
+                        return false;
                     }
                 });
                 
                 function enableButton() {
                     if (answered) {
                         $('#nextBtn, #submitBtn').prop('disabled', false);
-                        $('#error').hide(); // Hide error message when the question is answered
+                        $('#error').hide();
                     }
                 }
             });
